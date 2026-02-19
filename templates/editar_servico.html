@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="form-container">
+    <h1>Editar Serviço</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Salvar alterações</button>
+    </form>
+</div>
+{% endblock %}

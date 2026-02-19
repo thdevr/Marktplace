@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<style>
+.detalhe-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 30px;
+    background: #1e293b;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(59,130,246,0.2);
+}
+
+.detalhe-container img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.detalhe-container h2 {
+    margin-bottom: 15px;
+    color: #3b82f6;
+}
+
+.detalhe-container p {
+    margin: 8px 0;
+    color: #e5e7eb;
+    font-size: 16px;
+}
+
+.detalhe-container strong {
+    color: white;
+}
+
+.btn-whatsapp {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 18px;
+    background-color: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe57;
+}
+</style>
+
+<div class="detalhe-container">
+
+    {% if servico.imagem %}
+        <img src="{{ servico.imagem.url }}" width="400">
+    {% endif %}
+
+    <h2>{{ servico.nome }}</h2>
+
+    <p><strong>Descrição:</strong> {{ servico.descricao }}</p>
+    <p><strong>Categoria:</strong> {{ servico.categoria.nome }}</p>
+
+    <p><strong>Prestador:</strong> {{ servico.prestador.username }}</p>
+    <p><strong>Publicado em:</strong> {{ servico.criado_em|date:"d/m/Y" }}</p>
+
+    {% if servico.prestador.perfil.telefone %}
+        <a href="https://wa.me/{{ servico.prestador.perfil.telefone }}" target="_blank" class="btn-whatsapp
+        
+        
+        ">
+            Falar no WhatsApp
+        </a>
+    {% endif %}
+
+</div>
+
+{% endblock %}

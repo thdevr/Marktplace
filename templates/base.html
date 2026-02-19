@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<nav>
+    <h2>Marketplace</h2>
+    <div class="menu">
+        
+
+        {% if user.is_authenticated %}
+            <span>Olá, {{ user.username }}!</span>
+            <a href="{% url 'anunciar' %}">Anunciar</a>
+            <a href="{% url 'perfil' %}">Perfil</a>
+            <a href="{% url 'meus_anuncios' %}">Meus anuncios</a>
+            <a href="{% url 'logout' %}">Sair</a>
+        {% else %}
+            <a href="{% url 'login' %}">Entrar</a>
+            <a href="{% url 'cadastrar' %}">Criar conta</a>
+        {% endif %}
+        <a href="{% url 'home' %}">Início</a>
+    </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

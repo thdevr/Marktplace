@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+h1 {
+    text-align: center;
+}
+
+/* Links dentro dos cards de produtos e serviços */
+.card .info a {
+    color: white;       /* deixa o texto branco */
+    text-decoration: none; /* remove sublinhado */
+    text-align: center;
+}
+
+/* Mantém o hover suave sem mudar a cor do texto */
+.card .info a:hover {
+    color: white; /* ou você pode deixar um azul se quiser destacar */
+}
+
+
+</style>
+
+<header>
+    <h1>Encontre tudo na sua região</h1>
+    <input type="text" placeholder="Buscar produtos...">
+</header>
+
+<!-- Seção de Produtos -->
+<H1>Produtos</H1>
+
+<section class="produtos">
+    {% for produto in produtos %}
+        
+        <div class="card">
+            <div class="info">
+                <a href="{% url 'detalhe_produto' produto.id %}">
+
+                    {% if produto.imagem %}
+                        <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" width="200">
+                    {% endif %}
+
+                    <h3>{{ produto.nome }}</h3>
+                    <p class="preco">R$ {{ produto.preco }}</p>
+                    <p class="quantidade">Estoque: {{ produto.quantidade }}</p>
+                    <p class="meta">
+                        Por {{ produto.vendedor.username }} • {{ produto.criado_em|date:"d/m/Y" }}
+                    </p>
+
+                    {% if produto.vendedor.perfil.telefone %}
+                        <a href="https://wa.me/{{ produto.vendedor.perfil.telefone }}" target="_blank" class="btn-whatsapp">
+                            Falar no WhatsApp
+                        </a>
+                    {% endif %}
+
+                    <span class="badge">Produto</span>
+                </a>
+            </div>
+        </div>
+    {% empty %}
+        <p>Nenhum produto cadastrado.</p>
+    {% endfor %}
+</section>
+
+<h1>Serviços</h1>
+<!-- Seção de Serviços -->
+<section class="produtos">
+    {% for servico in servicos %}
+
+        <div class="card">
+            <div class="info">
+                <a href="{% url 'detalhe_servico' servico.id %}">
+
+                    {% if servico.imagem %}
+                        <img src="{{ servico.imagem.url }}" alt="{{ servico.nome }}" width="200">
+                    {% endif %}
+                    <h3>{{ servico.nome }}</h3>
+                    <p>{{ servico.descricao }}</p>
+                    <p class="meta">
+                        Por {{ servico.prestador.username }} • {{ servico.criado_em|date:"d/m/Y" }}
+                    </p>
+
+                    {% if servico.prestador.perfil.telefone %}
+                        <a href="https://wa.me/{{ servico.prestador.perfil.telefone }}" target="_blank" class="btn-whatsapp">
+                            Falar no WhatsApp
+                        </a>
+                    {% endif %}
+
+                    <span class="badge">Serviço</span>
+                </a>
+            </div>
+        </div>
+    {% empty %}
+        <p>Nenhum serviço cadastrado.</p>
+    {% endfor %}
+</section>
+
+{% endblock %}

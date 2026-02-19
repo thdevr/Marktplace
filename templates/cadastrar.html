@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="form-container">
+    <h2>Criar Conta</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <div class="error-box">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+
+        {% if form.errors %}
+            <div style="color: red;">
+                {{ form.errors }}
+            </div>
+        {% endif %}
+
+
+        {{ form.as_p }}
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <p>Já tem conta? <a href="{% url 'login' %}">Entrar</a></p>
+</div>
+
+{% endblock %}

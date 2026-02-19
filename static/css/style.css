@@ -1,0 +1,378 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #111827;
+  border-bottom: 1px solid #1f2937;
+}
+
+nav h2 {
+  color: #3b82f6;
+}
+
+.menu a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #3b82f6;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+header input {
+  padding: 12px;
+  width: 300px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+}
+
+/* CATEGORIAS */
+.categorias {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.categorias a {
+  display: inline-block;
+  background: #1e293b;
+  border: 1px solid #3b82f6;
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  margin: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.categorias a:hover {
+  background: #3b82f6;
+}
+
+.categoria-ativa {
+  background: #3b82f6;
+  font-weight: bold;
+}
+
+/* PRODUTOS */
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 40px;
+}
+
+.card {
+  background: #1e293b;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(59,130,246,0.2);
+}
+
+/* Links dentro dos cards de produtos e serviços */
+.card .info a {
+    color: white;       /* deixa o texto branco */
+    text-decoration: none; /* remove sublinhado */
+}
+
+/* Mantém o hover suave sem mudar a cor do texto */
+.card .info a:hover {
+    color: white; /* ou você pode deixar um azul se quiser destacar */
+}
+
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(59,130,246,0.4);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.info {
+  padding: 15px;
+}
+
+.card h3 {
+  margin: 0;
+  color: white;
+
+}
+
+.preco {
+  color: #3b82f6;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.quantidade {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.meta {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 5px;
+}
+
+/* pagina de cadastrar */
+.form-container {
+  max-width: 400px;
+  margin: 60px auto;
+  background: #1e293b;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(59,130,246,0.2);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container form p {
+  margin-bottom: 15px;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 5px;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  background: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.form-container button:hover {
+  background: #2563eb;
+}
+
+.form-container a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+/* Botão de ação do perfil */
+.perfil-actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.perfil-actions .form-button {
+  display: inline-block;
+  padding: 12px 25px;
+  background: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.perfil-actions .form-button:hover {
+  background: #2563eb;
+}
+
+/*anunciar*/
+.anunciar-container {
+    max-width: 500px;
+    margin: 60px auto;
+    text-align: center;
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(59,130,246,0.2);
+}
+
+.anunciar-opcoes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.anunciar-opcoes .btn {
+    padding: 15px 25px;
+    background: #3b82f6;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.anunciar-opcoes .btn:hover {
+    background: #2563eb;
+}
+
+
+/* Campos de formulário */
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 5px;
+    box-sizing: border-box; /* garante que padding não quebre o tamanho */
+    font-size: 14px;
+    resize: vertical; /* deixa o usuário poder aumentar a altura do textarea */
+}
+
+.form-container textarea {
+    min-height: 100px; /* altura inicial decente */
+    max-height: 300px; /* limita a altura máxima */
+}
+
+/* Botão WhatsApp */
+.btn-whatsapp {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    background-color: #25D366; /* verde WhatsApp */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe57;
+}
+
+/* Badge Produto/Serviço */
+.badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: white;
+    background-color: #007BFF; /* azul padrão */
+    margin-top: 8px;
+}
+
+/* Diferenciar Produto e Serviço */
+.badge:contains("Serviço") {
+    background-color: #28a745; /* verde para serviços */
+}
+
+
+/* Seções de Meus Anúncios */
+.meus-produtos, .meus-servicos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+/* Cards */
+.meus-produtos .card, .meus-servicos .card {
+    background: #1e293b;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(59,130,246,0.2);
+    padding: 15px;
+}
+
+.meus-produtos .card:hover, .meus-servicos .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(59,130,246,0.4);
+}
+
+/* Info dentro do card */
+.meus-produtos .info h3, .meus-servicos .info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2em;
+}
+
+.meus-produtos .info p, .meus-servicos .info p {
+    margin: 3px 0;
+    color: #9ca3af;
+}
+
+/* Botões Editar e Excluir */
+.btn-editar, .btn-excluir {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.btn-editar {
+    background-color: #3b82f6;
+}
+
+.btn-editar:hover {
+    background-color: #2563eb;
+}
+
+.btn-excluir {
+    background-color: #dc3545;
+    margin-left: 5px;
+}
+
+.btn-excluir:hover {
+    background-color: #a71d2a;
+}
+
+/* Badge Produto/Serviço */
+.meus-produtos .badge {
+    background-color: #007BFF; /* azul para produtos */
+}
+
+.meus-servicos .badge {
+    background-color: #28a745; /* verde para serviços */
+}
+
+/* Títulos das seções */
+.meus-produtos h2, .meus-servicos h2 {
+    margin-bottom: 10px;
+    color: #3b82f6;
+}
+
+
+/* Página de detalhe */
+
+

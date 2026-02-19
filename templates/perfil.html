@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="form-container">
+    <h2>Meu Perfil</h2>
+
+    <div class="perfil-card">
+        <h3>Dados do Usuário</h3>
+        <ul>
+            <li><strong>Nome de usuário:</strong> {{ usuario.username }}</li>
+            <li><strong>Email:</strong> {{ usuario.email }}</li>
+        </ul>
+
+        <h3>Dados do Perfil</h3>
+        <ul>
+            <li><strong>Nome completo:</strong> {{ perfil.nome_completo }}</li>
+            <li><strong>Telefone:</strong> {{ perfil.telefone }}</li>
+            <li><strong>Rua:</strong> {{ perfil.rua }}</li>
+            <li><strong>Número:</strong> {{ perfil.numero }}</li>
+            <li><strong>Bairro:</strong> {{ perfil.bairro }}</li>
+        </ul>
+    </div>
+
+     <!-- Botão para editar -->
+    <div class="perfil-actions">
+        <a href="{% url 'editar_perfil' %}" class="form-button">Editar Perfil</a>
+    </div>
+
+</div>
+
+{% endblock %}

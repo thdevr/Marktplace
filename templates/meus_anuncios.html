@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Meus Anúncios</h1>
+
+<!-- Produtos -->
+<section class="meus-produtos">
+    {% for produto in produtos %}
+        <div class="card">
+            <div class="info">
+                {% if produto.imagem %}
+                    <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" width="200">
+                {% endif %}
+                <h3>{{ produto.nome }}</h3>
+                <p class="preco">R$ {{ produto.preco }}</p>
+                <p class="quantidade">Estoque: {{ produto.quantidade }}</p>
+
+                <p class="meta">
+                    Criado em {{ produto.criado_em|date:"d/m/Y" }}
+                </p>
+
+                <!-- Botões de ação -->
+                <a href="{% url 'editar_produto' produto.id %}" class="btn-editar">Editar</a>
+                <a href="{% url 'excluir_produto' produto.id %}" class="btn-excluir">Excluir</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>Você não tem produtos cadastrados.</p>
+    {% endfor %}
+</section>
+
+<!-- Serviços -->
+<section class="meus-servicos">
+    {% for servico in servicos %}
+        <div class="card">
+            <div class="info">
+                {% if servico.imagem %}
+                    <img src="{{ servico.imagem.url }}" alt="{{ servico.nome }}" width="200">
+                {% endif %}
+                <h3>{{ servico.nome }}</h3>
+                <p>{{ servico.descricao }}</p>
+                <p class="meta">Criado em {{ servico.criado_em|date:"d/m/Y" }}</p>
+
+                <!-- Botões de ação -->
+                <a href="{% url 'editar_servico' servico.id %}" class="btn-editar">Editar</a>
+                <a href="{% url 'excluir_servico' servico.id %}" class="btn-excluir">Excluir</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>Você não tem serviços cadastrados.</p>
+    {% endfor %}
+</section>
+
+{% endblock %}

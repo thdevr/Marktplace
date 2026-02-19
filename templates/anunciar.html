@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="anunciar-container">
+    <h2>O que você quer anunciar?</h2>
+    <div class="anunciar-opcoes">
+        <a href="{% url 'anunciar_produto' %}" class="btn">Produto</a>
+        <a href="{% url 'anunciar_servico' %}" class="btn">Serviço</a>
+    </div>
+</div>
+
+{% endblock %}
