@@ -1,17 +1,32 @@
 from django.shortcuts import render
 from produtos.models import Produto, Categoria, Servico
-
-
+from django.db.models import Q
 
 def home(request):
+    query = request.GET.get('q')
     categoria_nome = request.GET.get('categoria')
 
+    produtos = Produto.objects.all()
+    servicos = Servico.objects.all()
+
+    # 🔎 Filtro por pesquisa
+    if query:
+        produtos = produtos.filter(
+            Q(nome__icontains=query) |
+            Q(descricao__icontains=query) |
+            Q(categoria__nome__icontains=query)
+        )
+
+        servicos = servicos.filter(
+            Q(nome__icontains=query) |
+            Q(descricao__icontains=query)
+        )
+
+
+    # 📂 Filtro por categoria
     if categoria_nome:
-        produtos = Produto.objects.filter(categoria__nome=categoria_nome)
-        servicos = Servico.objects.filter(categoria__nome=categoria_nome)
-    else:
-        produtos = Produto.objects.all()
-        servicos = Servico.objects.all()
+        produtos = produtos.filter(categoria__nome=categoria_nome)
+        servicos = servicos.filter(categoria__nome=categoria_nome)
 
     categorias = Categoria.objects.filter(produto__isnull=False).distinct()
 

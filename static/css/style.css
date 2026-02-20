@@ -5,6 +5,10 @@ body {
   color: white;
 }
 
+h1 {
+  text-align: center;
+}
+
 /* NAVBAR */
 nav {
   display: flex;
@@ -13,6 +17,7 @@ nav {
   padding: 15px 40px;
   background: #111827;
   border-bottom: 1px solid #1f2937;
+  color: white;
 }
 
 nav h2 {
@@ -21,13 +26,19 @@ nav h2 {
 
 .menu a {
   color: white;
-  margin-left: 20px;
+  margin-left: 15px;
   text-decoration: none;
   transition: 0.3s;
 }
 
 .menu a:hover {
   color: #3b82f6;
+}
+
+.hamburguer {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
 }
 
 /* HEADER */
@@ -92,6 +103,7 @@ header input {
 .card .info a {
     color: white;       /* deixa o texto branco */
     text-decoration: none; /* remove sublinhado */
+    text-align: center;
 }
 
 /* Mantém o hover suave sem mudar a cor do texto */
@@ -374,5 +386,118 @@ header input {
 
 
 /* Página de detalhe */
+.detalhe-container {
+        max-width: 700px;
+        margin: 60px auto;
+        padding: 30px;
+        background: #1e293b;
+        border-radius: 15px;
+        box-shadow: 0 0 25px rgba(59,130,246,0.2);
+        color: white;
+    }
 
+    .detalhe-container img {
+        width: 100%;
+        max-height: 600px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 25px;
+    }
 
+    .detalhe-container h2 {
+        margin-bottom: 15px;
+        color: white;
+        text-align: center;
+    }
+
+    .detalhe-container p {
+        margin: 8px 0;
+        color: #e5e7eb;
+        font-size: 16px;
+    }
+
+    .detalhe-container strong {
+        color: white;
+    }
+
+    .btn-whatsapp {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 18px;
+        background-color: #25D366;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .btn-whatsapp:hover {
+        background-color: #1ebe57;
+    }
+
+/* ================= RESPONSIVIDADE ================= */
+/* ============================= */
+/* RESPONSIVO PARA CELULAR */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  /* NAVBAR */
+  nav {
+    padding: 15px 20px;
+  }
+
+  .menu {
+    display: none; /* esconde menu normal */
+    flex-direction: column;
+    background: #111827;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 200px;
+    padding: 15px;
+    border-radius: 0 0 0 10px;
+  }
+
+  .menu a {
+    margin: 10px 0;
+  }
+
+  .hamburguer {
+    display: block; /* mostra botão hamburguer */
+  }
+
+  /* HEADER */
+  header input {
+    width: 90%;
+  }
+
+  /* GRID PRODUTOS */
+  .produtos,
+  .meus-produtos,
+  .meus-servicos {
+    padding: 20px;
+    gap: 15px;
+    grid-template-columns: 1fr; /* 1 card por linha */
+  }
+
+  /* FORMULÁRIOS */
+  .form-container,
+  .anunciar-container,
+  .detalhe-container {
+    margin: 30px 15px;
+    padding: 20px;
+  }
+
+  /* BOTÕES ANUNCIAR */
+  .anunciar-opcoes {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .anunciar-opcoes .btn {
+    width: 100%;
+  }
+
+}

@@ -1,29 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<style>
-h1 {
-    text-align: center;
-}
-
-/* Links dentro dos cards de produtos e serviços */
-.card .info a {
-    color: white;       /* deixa o texto branco */
-    text-decoration: none; /* remove sublinhado */
-    text-align: center;
-}
-
-/* Mantém o hover suave sem mudar a cor do texto */
-.card .info a:hover {
-    color: white; /* ou você pode deixar um azul se quiser destacar */
-}
-
-
-</style>
-
 <header>
     <h1>Encontre tudo na sua região</h1>
-    <input type="text" placeholder="Buscar produtos...">
+    <form method="GET">
+        <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Pesquisar...">
+        <button type="submit" class="btn-whatsapp">Buscar</button>
+    </form>
+
 </header>
 
 <!-- Seção de Produtos -->
