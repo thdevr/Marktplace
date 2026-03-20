@@ -17,10 +17,11 @@ def gerar_relatorio(request):
     usuario = request.user
     perfil = usuario.perfil
 
-    # 🔹 PEGAR PRODUTOS E SERVIÇOS
+    # 🔹 PRODUTOS E SERVIÇOS
     produtos = Produto.objects.filter(vendedor=usuario)
     servicos = Servico.objects.filter(prestador=usuario)
 
+    # 🔹 RESPOSTA PDF
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'inline; filename="relatorio.pdf"'
 
@@ -39,7 +40,7 @@ def gerar_relatorio(request):
     elementos.append(Paragraph(f"Email: {usuario.email}", styles['Normal']))
     elementos.append(Spacer(1, 12))
 
-    # 🔹 DADOS DO PERFIL
+    # 🔹 PERFIL
     elementos.append(Paragraph("Dados do Perfil", styles['Heading2']))
     elementos.append(Paragraph(f"Nome completo: {perfil.nome_completo}", styles['Normal']))
     elementos.append(Paragraph(f"Telefone: {perfil.telefone}", styles['Normal']))
@@ -54,14 +55,16 @@ def gerar_relatorio(request):
 
     if produtos:
         for p in produtos:
-            elementos.append(Paragraph(f"{p.nome} | R$ {p.preco}", styles['Normal']))
+            elementos.append(Paragraph(f"<b>{p.nome}</b> | R$ {p.preco}", styles['Normal']))
 
-        if p.imagem:
-            caminho_imagem = p.imagem.path  # pega caminho real da imagem
-            img = Image(caminho_imagem, width=100, height=100)
-            elementos.append(img)
+            if p.imagem:
+                try:
+                    img = Image(p.imagem.path, width=100, height=100)
+                    elementos.append(img)
+                except:
+                    pass  # evita erro se imagem não existir no caminho
 
-        elementos.append(Spacer(1, 10))
+            elementos.append(Spacer(1, 10))
     else:
         elementos.append(Paragraph("Nenhum produto cadastrado.", styles['Normal']))
 
@@ -72,14 +75,16 @@ def gerar_relatorio(request):
 
     if servicos:
         for s in servicos:
-            elementos.append(Paragraph(f"{s.nome} | R$ {s.preco}", styles['Normal']))
+            elementos.append(Paragraph(f"<b>{s.nome}</b> | R$ {s.preco}", styles['Normal']))
 
-        if s.imagem:
-            caminho_imagem = s.imagem.path
-            img = Image(caminho_imagem, width=100, height=100)
-            elementos.append(img)
+            if s.imagem:
+                try:
+                    img = Image(s.imagem.path, width=100, height=100)
+                    elementos.append(img)
+                except:
+                    pass
 
-        elementos.append(Spacer(1, 10))
+            elementos.append(Spacer(1, 10))
     else:
         elementos.append(Paragraph("Nenhum serviço cadastrado.", styles['Normal']))
 
