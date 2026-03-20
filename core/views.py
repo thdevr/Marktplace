@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from produtos.models import Produto, Categoria, Servico
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
+
+@login_required(login_url='login')
 def home(request):
     query = request.GET.get('q')
     categoria_nome = request.GET.get('categoria')

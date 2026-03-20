@@ -12,5 +12,5 @@ urlpatterns = [
     path('excluir-servico/<int:id>/', views.excluir_servico, name='excluir_servico'),
     path('produto/<int:id>/', views.detalhe_produto, name='detalhe_produto'),
     path('servico/<int:id>/', views.detalhe_servico, name='detalhe_servico'),
-
+    path('relatorio/', views.gerar_relatorio, name='gerar_relatorio'),
 ]
