@@ -23,7 +23,11 @@ nav {
 nav h2 {
   color: #3b82f6;
 }
-
+.menu {
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
 .menu a {
   color: white;
   margin-left: 15px;
@@ -447,26 +451,36 @@ header input {
   nav {
     padding: 15px 20px;
   }
-
+  .hamburguer {
+    display: block; /* Garante que o ícone ☰ apareça */
+    z-index: 1001;
+  }
   .menu {
-    display: none; /* esconde menu normal */
+    display: none; /* Esconde por padrão no mobile */
     flex-direction: column;
     background: #111827;
     position: absolute;
-    top: 70px;
+    top: 60px; /* Ajuste conforme a altura da sua nav */
     right: 0;
-    width: 200px;
-    padding: 15px;
-    border-radius: 0 0 0 10px;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 2px solid #3b82f6;
+    z-index: 1000;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.3);
   }
 
-  .menu a {
-    margin: 10px 0;
+  /* O SEGREDO: Quando o JS adicionar a classe 'ativo', o menu aparece */
+  .menu.ativo {
+    display: flex;
   }
 
-  .hamburguer {
-    display: block; /* mostra botão hamburguer */
+  .menu a, .menu span {
+    margin: 15px 0;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
   }
+
 
   /* HEADER */
   header input {
@@ -485,15 +499,20 @@ header input {
   /* FORMULÁRIOS */
   .form-container,
   .anunciar-container,
-  .detalhe-container {
-    margin: 30px 15px;
-    padding: 20px;
+  /* Isso vai no corpo geral do CSS ou dentro do @media se quiser apenas no mobile */
+  .anunciar-opcoes {
+      display: flex;
+      flex-direction: column; /* Empilha os botões */
+      gap: 15px;              /* Cria o espaço exato entre eles */
+      margin-top: 30px;
+      align-items: center;    /* Centraliza os botões horizontalmente */
   }
 
-  /* BOTÕES ANUNCIAR */
-  .anunciar-opcoes {
-    flex-direction: column;
-    gap: 15px;
+  .anunciar-opcoes .btn {
+      width: 100%;            /* Faz o botão ocupar a largura disponível */
+      max-width: 300px;       /* Mas não deixa ele ficar gigante em telas maiores */
+      text-align: center;     /* Garante o texto no meio */
+      box-sizing: border-box; /* Evita que o padding "estoure" a largura */
   }
 
   .anunciar-opcoes .btn {
