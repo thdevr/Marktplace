@@ -14,6 +14,10 @@ def home(request):
 
     # 🔎 Filtro por pesquisa
     if query:
+
+
+
+
         produtos = produtos.filter(
             Q(nome__icontains=query) |
             Q(descricao__icontains=query) |
@@ -41,3 +45,6 @@ def home(request):
     }
 
     return render(request, 'home.html', context)
+
+def suporte(request):
+    return render(request, 'suporte.html')

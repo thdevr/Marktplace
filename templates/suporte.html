@@ -1,0 +1,375 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Suporte{% endblock %}
+
+{% block content %}
+
+<style>
+  .suporte-hero {
+    text-align: center;
+    padding: 60px 20px 30px;
+  }
+
+  .suporte-hero h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .suporte-hero p {
+    color: #9ca3af;
+    font-size: 1rem;
+  }
+
+  .suporte-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 30px;
+  }
+
+  .info-box,
+  .form-box {
+    background: #1e293b;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.15);
+  }
+
+  .info-box h3,
+  .form-box h3 {
+    color: #3b82f6;
+    margin-bottom: 20px;
+    font-size: 1rem;
+  }
+
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+    color: #e5e7eb;
+    font-size: 14px;
+  }
+
+  .icon-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1d4ed8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .icon-circle.green {
+    background: #25D366;
+  }
+
+  .info-item strong {
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .info-item span {
+    color: #9ca3af;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    color: #9ca3af;
+    margin-bottom: 5px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background: #0f172a;
+    color: white;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: #3b82f6;
+  }
+
+  .form-group select option {
+    background: #1e293b;
+  }
+
+  .form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+    max-height: 300px;
+  }
+
+  .btn-whatsapp-send {
+    width: 90%;
+    padding: 12px;
+    background: #25D366;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .btn-whatsapp-send:hover {
+    background: #1ebe57;
+  }
+
+  /* FAQ */
+  .faq-section {
+    max-width: 900px;
+    margin: 10px auto 50px;
+    padding: 0 30px;
+  }
+
+  .faq-section h2 {
+    color: #3b82f6;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+  }
+
+  .faq-item {
+    background: #1e293b;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .faq-q {
+    padding: 15px 18px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .faq-q:hover {
+    background: #263348;
+  }
+
+  .faq-a {
+    display: none;
+    padding: 0 18px 15px;
+    font-size: 13px;
+    color: #9ca3af;
+    line-height: 1.6;
+  }
+
+  .faq-item.aberto .faq-a {
+    display: block;
+  }
+
+  .faq-item.aberto .faq-seta {
+    transform: rotate(180deg);
+  }
+
+  .faq-seta {
+    transition: transform 0.3s;
+    display: inline-block;
+  }
+
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .suporte-grid {
+      grid-template-columns: 1fr;
+      padding: 0 20px;
+    }
+
+    .faq-section {
+      padding: 0 20px;
+    }
+  }
+</style>
+
+<!-- HERO -->
+<div class="suporte-hero">
+  <h1>Central de Suporte</h1>
+  <p>Tire suas dúvidas ou entre em contato diretamente pelo WhatsApp</p>
+</div>
+
+<!-- GRID: INFO + FORM -->
+<div class="suporte-grid">
+
+  <!-- Coluna esquerda: informações -->
+  <div class="info-box">
+    <h3>Informações de contato</h3>
+
+    <div class="info-item">
+      <div class="icon-circle">📱</div>
+      <div>
+        <strong>WhatsApp</strong>
+        <span>(XX) XXXXX-XXXX</span> <!-- Substitua pelo seu número -->
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="icon-circle">🕐</div>
+      <div>
+        <strong>Horário de atendimento</strong>
+        <span>Seg–Sex: 8h às 18h<br>Sáb: 8h às 12h</span> <!-- Ajuste o horário -->
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="icon-circle">⚡</div>
+      <div>
+        <strong>Tempo de resposta</strong>
+        <span>Em até 30 minutos</span>
+      </div>
+    </div>
+
+    <div class="info-item">
+      <div class="icon-circle green">✓</div>
+      <div>
+        <strong>Atendimento pelo WhatsApp</strong>
+        <span>Resposta rápida e direta</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coluna direita: formulário -->
+  <div class="form-box">
+    <h3>Enviar mensagem</h3>
+
+    <div class="form-group">
+      <label for="nome">Seu nome</label>
+      <input type="text" id="nome" placeholder="Ex: João Silva">
+    </div>
+
+    <div class="form-group">
+      <label for="assunto">Assunto</label>
+      <select id="assunto">
+        <option value="Dúvida sobre produto">Dúvida sobre produto</option>
+        <option value="Problema com pedido">Problema com pedido</option>
+        <option value="Sugestão">Sugestão</option>
+        <option value="Outro">Outro</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="mensagem">Mensagem</label>
+      <textarea id="mensagem" placeholder="Descreva sua dúvida ou problema..."></textarea>
+    </div>
+
+    <a id="btn-whatsapp" class="btn-whatsapp-send" href="#" target="_blank" onclick="enviarWhatsApp(event)">
+      💬 Enviar pelo WhatsApp
+    </a>
+  </div>
+
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <h2>Perguntas frequentes</h2>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Como faço para rastrear meu pedido?
+      <span class="faq-seta">▾</span>
+    </div>
+    <div class="faq-a">
+      Acesse a página do seu perfil e clique em "Meus Pedidos" para acompanhar o status da entrega.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Qual o prazo de entrega?
+      <span class="faq-seta">▾</span>
+    </div>
+    <div class="faq-a">
+      O prazo varia de 3 a 7 dias úteis dependendo da sua localidade.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Como faço para cancelar um pedido?
+      <span class="faq-seta">▾</span>
+    </div>
+    <div class="faq-a">
+      Entre em contato pelo WhatsApp em até 24h após a compra para solicitar o cancelamento.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      Posso alterar o endereço de entrega?
+      <span class="faq-seta">▾</span>
+    </div>
+    <div class="faq-a">
+      Sim, desde que o pedido ainda não tenha sido despachado. Entre em contato pelo WhatsApp o quanto antes.
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ================================================
+  // CONFIGURAÇÃO — altere apenas esta variável
+  // ================================================
+  const SEU_WHATSAPP = "5589994041665"; // Coloque seu número aqui: código do país + DDD + número
+  // Exemplo: "5589912345678" para (89) 9 1234-5678 do Brasil
+  // ================================================
+
+  function enviarWhatsApp(event) {
+    event.preventDefault();
+
+    const nome     = document.getElementById('nome').value.trim();
+    const assunto  = document.getElementById('assunto').value;
+    const mensagem = document.getElementById('mensagem').value.trim();
+
+    if (!nome) {
+      alert('Por favor, informe seu nome.');
+      return;
+    }
+    if (!mensagem) {
+      alert('Por favor, escreva uma mensagem.');
+      return;
+    }
+
+    const texto = `Olá! Me chamo *${nome}*.\n\n*Assunto:* ${assunto}\n\n*Mensagem:* ${mensagem}`;
+    const url   = `https://wa.me/${SEU_WHATSAPP}?text=${encodeURIComponent(texto)}`;
+
+    window.open(url, '_blank');
+  }
+
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    item.classList.toggle('aberto');
+  }
+</script>
+
+{% endblock %}

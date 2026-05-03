@@ -12,7 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('usuarios/', include('usuarios.urls')),
     path('produtos/', include('produtos.urls')),
-
+    path('suporte/', views.suporte, name='suporte'),
 ]
 
 if settings.DEBUG:
